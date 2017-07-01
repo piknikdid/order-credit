@@ -12,7 +12,7 @@ app.controller('firstStep', function($scope,$http){
           });
 
   this.postDate = function(product) {
-    this.user.put(this.task)
+    this.user.push(this.task)
   }
 
 });
