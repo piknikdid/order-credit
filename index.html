@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app='credit' lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="src/style.css">
+  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="node_modules/angular/angular.min.js"></script>
+
+  <script src="src/app/app.js"></script>
+
+  <title>Credit</title>
+
+</head>
+
+<body ng-app="credit">
+  <div class="container" ng-controller='firstStep'>
+    <h1>Order credit</h1>
+    <ul class = 'nav nav-pills' ng-init='tab = 1'>
+      <li ng-class="{ active:tab === 1 }"><a href="" ng-click = 'tab = 1'>1</a></li>
+      <li ng-class="{ active:tab === 2 }"><a href="" >2</a></li>
+      <li ng-class="{ active:tab === 3 }"><a href="" >3</a></li>
+    </ul>
+    <form ng-show = 'tab === 1'name='myForm' id='myForm' ng-model='name' >
+      <div class="form-group">
+        <label for="sum">Сумма</label><input placeholder="{{example.sum}}" ng-model="firstStep.task.mySum" type="number" min='1000' max='10000' name="sum" value="" required />
+      </div>
+      <div class="form-group">
+        <label for="term">Срок</label><input placeholder="{{example.month}}"  ng-model="firstStep.task.myterm" type="number" min='1' max='12' name="term" value="" required />
+      </div>
+      <input type="submit" ng-disabled="myForm.$invalid" class="btn btn-success" ng-click='tab = tab+1; firstStep.postDate()' value="Next">
+
+    </form>
+
+    <form ng-show = 'tab === 2'name='myForm2' id='myForm'  ng-model='name1' >
+      <div class="form-group">
+        <label for="MyInn">ИНН</label><input placeholder="{{example.inn}}"  maxlength=10 minlength=10 ng-model="MyInn" type="text" min='1000' max='10000' name="MyInn" required />
+      </div>
+      <div class="form-group">
+        <label for="myLName">Фамилия</label><input placeholder="{{example.lastName}}" ng-model="myLName" type="text" min='1' max='12' name="myLName"  required />
+      </div>
+      <div class="form-group">
+        <label for="MyName">Имя</label><input placeholder="{{example.name}}"  ng-model="MyName" type="text" min='1' max='12' name="MyName"  required />
+      </div>
+      <div class="form-group">
+        <label for="MyCity">Город</label><input  ng-model="MyCity" type="text" min='1' max='12' name="MyCity" value="" required />
+      </div>
+      <button ng-disabled="myForm2.$invalid" class="btn btn-success" ng-click='tab = tab+1'>Next</button>
+      <button  class="btn btn-success" ng-click='tab = tab-1'>Back</button>
+    </form>
+
+    <div ng-show = 'tab === 3'>
+      <button  class="btn btn-success" >OK</button>
+      <button  class="btn btn-success" ng-click='tab = tab-1'>Back</button>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>
